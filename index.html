@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="tr" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com/3.4.3"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
+    <title>EmreYamanYazilim - Kahve dünyası </title>
+</head>
+
+<body style="background-color: black;">
+<header x-data="{ menuitems: [
+{ href: '#slider', title: 'Anasayfa' },
+{ href: '#about', title: 'Hakkımızda' },
+{ href: '#menu', title: 'Menü' },
+{ href: '#references', title: 'Bahsetmeler' },
+{ href: '#contact', title: 'İletişim' },
+]}" class="absolute z-50 top-0 w-full">
+
+    <div class="container mx-auto flex flex-row py-4 items-center">
+        <a href="">
+            <img src="images/espressolab.png" alt="" class="lg:w-[170px]">
+        </a>
+        <nav class=" flex items-center justify-center gap-6 pl-6  ml-6 border-l border-gray-200 text-base">
+            <template x-for="(menuitem, index) in menuitems" :key="index">
+                <a x-bind:href="menuitem.href" x-text="menuitem.title"
+                   class="font-medium text-white hover:underline"></a>
+            </template>
+        </nav>
+        <div class="ml-auto">
+            <a class="text-white px-4 py-2 font-semibold text-sm bg-red-600 rounded shadow" href="">Rezervasyon yap</a>
+        </div>
+    </div>
+</header>
+<div id="slider" x-data="slider" class="relative w-full h-[50vh] sm:h-screen overflow-hidden bg-black">
+    <template x-for="(slide, index) in slides">
+        <figure x-show="currentIndex == index">
+            <img x-bind:src="slide" class="absolute z-0 size-full object-cover">
+        </figure>
+    </template>
+    <button x-on:click="back()"
+            class="absolute left-6 lg:left-14 top-1/2
+        -translate-y-1/2 size-11 z-10 rounded-full
+        bg-gray-100 hover:bg-gray-200 shadow-md">
+        <svg class="size-8 text-gray-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+        </svg>
+    </button>
+    <button x-on:click="next()"
+            class="absolute right-6 lg:right-14 top-1/2 -translate-y-1/2 size-11 z-10 rounded-full bg-gray-100 hover:bg-gray-200 shadow-md">
+        <svg class="size-8 text-gray-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+             xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </button>
+</div>
+
+<div id="about" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col sm:flex-row gap-12 md:gap-8 md:gap-10 lg:gap-12 items-center">
+            <div class="w-full w-6/12">
+                <img src="images/about-us-1.jpg" alt="esporessolab kahve demeleme görseli" class="w-full rounded-lg">
+            </div>
+            <div class="w-full w-6/12">
+                <img src="images/espressolab.png" alt="Espressolab"
+                     class="w-[130px] sm:w-[160px] md:w-[180px] brightness-0">
+                <p class="mt-4 sm:mt-6 text-gray-500">Türkiye'nin en yenilikçi kahve zinciri olarak; kahve tutkunların
+                    dünyadaki
+                    gurme kahve kültürünün değişik tatlarını sunuyoruz. 2014'te İstanbul Bilgi Üniversitesi'nde ilk
+                    mağazamızla
+                    kapılarımızı açtığımız andan itibaren kahve tutkuları arasında önemli bir hayran kitlesine sahip
+                    olduk. İyi
+                    kahveye olan tutkumuzu her geçen gün daha fazla kahve severle paylaşmak için çok çalışıyoruz. Global
+                    bir
+                    marka olma yolunda ilerleyen şirketimizin 1 kavurma merkezi, Türkiye ve yurt dışında toplam 213
+                    mağazası
+                    bulunmaktadır. 2024 yılı içerisinde mağaza sayımızı 400'e çıkarmayı hedeflemekteyiz.
+                </p>
+            </div>
+        </div>
+        <div class="w-full rounded-lg bg-gray-500 my-8 p-14">
+            <h2 class=" text-xl text-white font-semibold">Kahvemizi Kendimiz Kavururuz</h2>
+            <p class=" mt-4 text-gray-300">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias, animi cum expedit
+                a fugiat illo ipsa labore laborum magni minima, nam necessitatibus nesciunt praesentium ratione,
+                repudiandae tempora. At doloribus dolorum ea eveniet ex explicabo fugit harum incidunt, ipsam iste
+                laboriosam libero magnam nemo nesciunt recusandae similique tempore temporibus, tenetur!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ad alias, animi cum expedit
+                a fugiat illo ipsa labore laborum magni minima, nam necessitatibus nesciunt praesentium ratione,
+                repudiandae tempora. At doloribus dolorum ea eveniet ex explicabo fugit harum incidunt, ipsam iste
+                laboriosam libero magnam nemo nesciunt recusandae similique tempore temporibus, tenetur!
+            </p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-12 md:gap-8 md:gap-10 lg:gap-12 items-center">
+            <div class="w-full w-6/12">
+                <h2 class="text-2xl  text-black text-bold">
+                    <span>
+                    Responsible together
+                    </span>
+                    Hareketi ile sürdürülebilir kahve
+                </h2>
+                <p class="mt-4 sm:mt-6 text-gray-500">Araştırmalara göre 2050 yılında kahve üretiminin iklim
+                    değişikliği,
+                    yanlış
+                    tarım politikaları ve üreticilerin kahvede gelecek görmemesi nedeniyle %50 oranında azalması
+                    öngörülüyor.
+                    Her gün büyük bir keyifle tükettiğimiz kahvenin iklim değişikliği karşısındaki uzun vadeli
+                    mücadelesi,
+                    sürdürülebilir tarımsal ürün olması ve geri dönüşüm projeleri gibi temel konularda, kahve sektörü
+                    içerisinde
+                    yer alan tüm markalara büyük sorumluluk düşüyor. “Future Generation Coffee” ile bu problemlerin
+                    bütününe
+                    eğilecek ve tüm kahve sektörünün katılımıyla yürütülecek yeni bir hareketi hayata geçirdik.
+                </p>
+            </div>
+            <div class="w-full w-6/12">
+                <img src="images/about-us-2.jpg" alt="esporessolab kahve demeleme görseli" class="w-full rounded-lg">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('slider', () => ({
+            slides: [
+                'images/slide-1.jpeg',
+                'images/slide-2.jpeg',
+                'images/slide-3.jpeg',
+            ],
+            currentIndex: 0,
+            back() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex = this.currentIndex - 1;
+                }
+            },
+            next() {
+                if (this.currentIndex < this.slides.length - 1) {
+                    this.currentIndex = this.currentIndex + 1;
+                } else {
+                    this.currentIndex = 0;
+                }
+            },
+        }))
+    })
+</script>
+</body>
+</html>
